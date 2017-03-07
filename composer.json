@@ -1,0 +1,12 @@
+{
+    "name": "root/invoice",
+    "require": {
+        "tecnickcom/tcpdf": "^6.2"
+    },
+    "authors": [
+        {
+            "name": "Marcel Roa",
+            "email": "mroa@limetec-biotechnologies.de"
+        }
+    ]
+}
