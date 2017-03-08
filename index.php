@@ -16,14 +16,11 @@
     $loader = new Twig_Loader_Filesystem('html');
     $twig = new Twig_Environment($loader);
 
-    $pdf = new TCPDF();
-    $pdf->AddPage();
-
     $html = $twig->render('invoice.twig.html', $invoiceData);
 
-    exec('fop-2.1/fop xml/invoice.fo.twig tmp/tmp.pdf');
+    $return = null;
+    $output = [];
+    exec('fop-2.1/fop xml/invoice.fo.twig tmp/tmp.pdf', $output, $return);
 
-    $pdf->writeHTML($html);
-
-    $pdf->Output('example_001.pdf', 'I');
+    echo $return;
 ?>

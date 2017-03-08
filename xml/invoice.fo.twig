@@ -1,18 +1,178 @@
 <?xml version="1.0"?>
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
-
     <fo:layout-master-set>
-        <fo:simple-page-master  master-name="myA4page"
-                                page-width="210mm" page-height="297mm">
-            <fo:region-body region-name="xsl-region-body"  margin="2cm"/>
+        <fo:simple-page-master master-name="myA4page"
+                               page-width="210mm"
+                               page-height="297mm">
+            <fo:region-body region-name="xsl-region-body"
+                            margin="2cm"/>
+            <fo:region-after region-name="xsl-region-after"
+                             extent="5cm"/>
         </fo:simple-page-master>
     </fo:layout-master-set>
 
-    <fo:page-sequence  master-reference="myA4page">
+    <fo:page-sequence master-reference="myA4page">
+        <fo:static-content flow-name="xsl-region-after"
+                           font-size="10">
+            <fo:block-container absolute-position="absolute"
+                                left="2cm">
+                <fo:block font-weight="bold">Unternehmenssitz:</fo:block>
+                <fo:block>Softwaremanufaktur Coreosoft</fo:block>
+                <fo:block>Haller Str. 8</fo:block>
+                <fo:block>16515 Oranienburg</fo:block>
+            </fo:block-container>
+
+            <fo:block-container absolute-position="absolute"
+                                left="8cm">
+                <fo:block font-weight="bold">Bankverbindung:</fo:block>
+                <fo:block>Mittelbrandenburgische</fo:block>
+                <fo:block>Sparkasse Potsdam</fo:block>
+                <fo:block>IBAN: 124124</fo:block>
+                <fo:block>BIC: WELADED1XXX</fo:block>
+            </fo:block-container>
+
+            <fo:block-container absolute-position="absolute"
+                                left="14cm">
+                <fo:block font-weight="bold">Geschäftsführung:</fo:block>
+                <fo:block>Marcel Roa</fo:block>
+                <fo:block>St.-Nr.: 12345/4632555</fo:block>
+                <fo:block>USt-IdNr.: DE154235253</fo:block>
+            </fo:block-container>
+
+        </fo:static-content>
+
         <fo:flow flow-name="xsl-region-body">
-            <fo:block>Softwaredienstleistungen CoreoSoft</fo:block>
-            <fo:block>Marcel Roa</fo:block>
+            <fo:block-container>
+                <fo:block font-size="10"
+                          margin-bottom="0.4cm"
+                          text-decoration="underline">
+                    Softwaremanufaktur Coreosoft • 16515 • Oranienburg
+                </fo:block>
+                <fo:block font-weight="bold">
+                    Max Mustermann
+                </fo:block>
+                <fo:block>
+                    Musterstr. 1
+                </fo:block>
+                <fo:block>
+                    11111 Musterstadt
+                </fo:block>
+            </fo:block-container>
+
+            <fo:block-container absolute-position="absolute"
+                                right="0cm"
+                                width="7cm">
+                <fo:block font-weight="bold"
+                          margin-bottom="0.1cm">
+                    Softwaremanufaktur Coreosoft
+                </fo:block>
+                <fo:block font-weight="bold">
+                    Marcel Roa
+                </fo:block>
+                <fo:block>
+                    Haller Str. 8
+                </fo:block>
+                <fo:block margin-bottom="0.5cm">
+                    16515 Oranienburg
+                </fo:block>
+
+                <fo:block font-weight="bold"
+                          margin-bottom="0.1cm">
+                    Kontaktdaten:
+                </fo:block>
+                <fo:block>
+                    Mobil: (0176) 97899006
+                </fo:block>
+                <fo:block>
+                    Tel.: (03301) 6769319
+                </fo:block>
+                <fo:block>
+                    Email: marcel.roa@gmx.de
+                </fo:block>
+                <fo:block>
+                    Web: www.coreosoft.de
+                </fo:block>
+            </fo:block-container>
+
+            <fo:block-container absolute-position="absolute"
+                                left="0cm"
+                                top="8cm">
+                <fo:block font-size="18"
+                          font-weight="bold">
+                    Rechnung
+                </fo:block>
+                <fo:block margin-bottom="1cm">
+                    Rechnungsnummer: 01/01/17/123
+                </fo:block>
+
+                <fo:table width="17cm">
+                    <fo:table-column column-number="1"
+                                     column-width="15%"/>
+                    <fo:table-column column-number="2"
+                                     column-width="60%"/>
+                    <fo:table-column column-number="3"
+                                     column-width="25%"/>
+
+                    <fo:table-header
+                            font-weight="bold">
+                        <fo:table-row background-color="#ff9000">
+                            <fo:table-cell column-number="1"
+                                           padding="1mm"
+                                           border-right-style="solid"
+                                           border-color="#FFFFFF"
+                                           border-right-width="0.1cm">
+                                <fo:block>Pos.</fo:block>
+                            </fo:table-cell>
+                            <fo:table-cell column-number="2"
+                                           padding="1mm"
+                                           border-right-style="solid"
+                                           border-color="#FFFFFF"
+                                           border-right-width="0.1cm">
+                                <fo:block>Bezeichnung</fo:block>
+                            </fo:table-cell>
+                            <fo:table-cell column-number="3"
+                                           padding="1mm">
+                                <fo:block>Preis</fo:block>
+                            </fo:table-cell>
+                        </fo:table-row>
+                    </fo:table-header>
+
+                    <fo:table-body>
+                        <fo:table-row>
+                            <fo:table-cell column-number="1"
+                                           padding="1mm">
+                                <fo:block> 1. Zelle</fo:block>
+                            </fo:table-cell>
+                            <fo:table-cell column-number="2"
+                                           padding="1mm">
+                                <fo:block> 2. Zelle</fo:block>
+                            </fo:table-cell>
+                            <fo:table-cell column-number="3"
+                                           padding="1mm"
+                                           text-align="right">
+                                <fo:block> 2. Zelle</fo:block>
+                            </fo:table-cell>
+                        </fo:table-row>
+
+                        <fo:table-row>
+                            <fo:table-cell column-number="1"
+                                           padding="1mm">
+                                <fo:block> 1. Zelle</fo:block>
+                            </fo:table-cell>
+                            <fo:table-cell column-number="2"
+                                           padding="1mm">
+                                <fo:block> 2. Zelle</fo:block>
+                            </fo:table-cell>
+                            <fo:table-cell column-number="3"
+                                           padding="1mm"
+                                           text-align="right">
+                                <fo:block> 2. Zelle</fo:block>
+                            </fo:table-cell>
+                        </fo:table-row>
+                    </fo:table-body>
+                </fo:table>
+            </fo:block-container>
+
         </fo:flow>
     </fo:page-sequence>
-
 </fo:root>
