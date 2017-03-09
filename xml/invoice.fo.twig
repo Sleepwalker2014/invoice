@@ -19,9 +19,9 @@
             <fo:block-container absolute-position="absolute"
                                 left="2cm">
                 <fo:block font-weight="bold">Unternehmenssitz:</fo:block>
-                <fo:block>Softwaremanufaktur Coreosoft</fo:block>
-                <fo:block>Haller Str. 8</fo:block>
-                <fo:block>16515 Oranienburg</fo:block>
+                <fo:block>{{ companyName }}</fo:block>
+                <fo:block>{{ companyStreet }} {{ companyHouseNumber }}</fo:block>
+                <fo:block>{{ companyZipCode }} {{ companyCity }}</fo:block>
             </fo:block-container>
 
             <fo:block-container absolute-position="absolute"
@@ -29,8 +29,8 @@
                 <fo:block font-weight="bold">Bankverbindung:</fo:block>
                 <fo:block>Mittelbrandenburgische</fo:block>
                 <fo:block>Sparkasse Potsdam</fo:block>
-                <fo:block>IBAN: 124124</fo:block>
-                <fo:block>BIC: WELADED1XXX</fo:block>
+                <fo:block>IBAN: {{ iban }}</fo:block>
+                <fo:block>BIC: {{ bic }}</fo:block>
             </fo:block-container>
 
             <fo:block-container absolute-position="absolute"
@@ -55,7 +55,7 @@
                 <fo:block font-size="10"
                           margin-bottom="0.4cm"
                           text-decoration="underline">
-                    Softwaremanufaktur Coreosoft • 16515 • Oranienburg
+                    {{ companyName }} • {{ companyZipCode }} • {{ companyCity }}
                 </fo:block>
                 <fo:block font-weight="bold">
                     {{ receiverName }}
@@ -105,7 +105,7 @@
             <fo:block-container>
                 <fo:block font-size="18"
                           font-weight="bold"
-                          margin-bottom="0.3cm">
+                          margin-bottom="0.2cm">
                     Rechnung
                 </fo:block>
                 <fo:block>
@@ -171,7 +171,9 @@
                         <fo:table-cell column-number="2"
                                        padding="1mm">
                             <fo:block font-weight="bold">Anforderungsermittlung</fo:block>
-                            <fo:block margin-bottom="3mm">Absprache des Kundenwunsches, sowie Erstellung eines Pflichtenheftes</fo:block>
+                            <fo:block margin-bottom="3mm">Absprache des Kundenwunsches, sowie Erstellung eines
+                                Pflichtenheftes
+                            </fo:block>
                             <fo:block>3 PS Einzelpreis: 45,50 €</fo:block>
                         </fo:table-cell>
                         <fo:table-cell column-number="3"
@@ -199,6 +201,76 @@
                             <fo:block>345,56 €</fo:block>
                         </fo:table-cell>
                     </fo:table-row>
+
+                    <fo:table-row>
+                        <fo:table-cell column-number="1"
+                                       padding="1mm">
+                            <fo:block>Pos. 1</fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell column-number="2"
+                                       padding="1mm">
+                            <fo:block font-weight="bold">Anforderungsermittlung</fo:block>
+                            <fo:block>Absprache des Kundenwunsches, sowie Erstellung eines Pflichtenheftes</fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell column-number="3"
+                                       padding="1mm"
+                                       text-align="right"
+                                       display-align="after">
+                            <fo:block>345,56 €</fo:block>
+                        </fo:table-cell>
+                    </fo:table-row>
+
+                    <fo:table-row>
+                        <fo:table-cell column-number="1"
+                                       padding="1mm">
+                            <fo:block>Pos. 1</fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell column-number="2"
+                                       padding="1mm">
+                            <fo:block font-weight="bold">Anforderungsermittlung</fo:block>
+                            <fo:block>Absprache des Kundenwunsches, sowie Erstellung eines Pflichtenheftes</fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell column-number="3"
+                                       padding="1mm"
+                                       text-align="right"
+                                       display-align="after">
+                            <fo:block>345,56 €</fo:block>
+                        </fo:table-cell>
+                    </fo:table-row>
+                    <fo:table-row>
+                        <fo:table-cell column-number="1"
+                                       padding="1mm">
+                            <fo:block>Pos. 1</fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell column-number="2"
+                                       padding="1mm">
+                            <fo:block font-weight="bold">Anforderungsermittlung</fo:block>
+                            <fo:block>Absprache des Kundenwunsches, sowie Erstellung eines Pflichtenheftes</fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell column-number="3"
+                                       padding="1mm"
+                                       text-align="right"
+                                       display-align="after">
+                            <fo:block>345,56 €</fo:block>
+                        </fo:table-cell>
+                    </fo:table-row>
+                    <fo:table-row>
+                        <fo:table-cell column-number="1"
+                                       padding="1mm">
+                            <fo:block>Pos. 1</fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell column-number="2"
+                                       padding="1mm">
+                            <fo:block font-weight="bold">Anforderungsermittlung</fo:block>
+                            <fo:block>Absprache des Kundenwunsches, sowie Erstellung eines Pflichtenheftes</fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell column-number="3"
+                                       padding="1mm"
+                                       text-align="right"
+                                       display-align="after">
+                            <fo:block>345,56 €</fo:block>
+                        </fo:table-cell>
+                    </fo:table-row>
                 </fo:table-body>
             </fo:table>
 
@@ -206,7 +278,7 @@
                 <fo:leader leader-pattern="rule"
                            leader-length="100%"
                            rule-style="double"
-                           rule-thickness="1pt"/>
+                           rule-thickness="2pt"/>
             </fo:block>
             <fo:block text-align="right"
                       margin-bottom="0.5cm"
@@ -216,14 +288,18 @@
 
             <fo:block margin-bottom="0.25cm">Bitte überweisen Sie den Betrag von
                 <fo:inline font-weight="bold">544,40 Euro</fo:inline>
-                                             unter Angabe der Rechnungsnummer bis zum
+                unter Angabe der Rechnungsnummer bis zum
                 <fo:inline font-weight="bold">01.01.2017</fo:inline>
-                                             auf die untenstehende Bankverbindung.
+                auf die untenstehende Bankverbindung.
             </fo:block>
-            <fo:block margin-bottom="0.5cm">Wir hoffen, diesen Auftrag zu Ihrer Zufriedenheit ausgeführt zu haben und verbleiben mit freundlichem Gruß.</fo:block>
+            <fo:block margin-bottom="0.5cm">Wir hoffen, diesen Auftrag zu Ihrer Zufriedenheit ausgeführt zu haben und
+                verbleiben mit freundlichem Gruß.
+            </fo:block>
             <fo:block margin-bottom="2cm">Marcel Roa</fo:block>
 
-            <fo:block font-size="10">Gemäß §19 UStG (1) weist dieser Rechnungsbetrag keine Umsatzsteuer aus. Sie sind verpflichtet, diese Rechnung zu Steuerzwecken zehn Jahre lang aufzubewahren.</fo:block>
+            <fo:block font-size="10">Gemäß §19 UStG (1) weist dieser Rechnungsbetrag keine Umsatzsteuer aus. Sie sind
+                verpflichtet, diese Rechnung zu Steuerzwecken zehn Jahre lang aufzubewahren.
+            </fo:block>
         </fo:flow>
     </fo:page-sequence>
 </fo:root>

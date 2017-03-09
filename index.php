@@ -1,31 +1,36 @@
 <?php
-    require_once ('vendor/autoload.php');
-    require_once ('InvoiceHandler.php');
+require_once('vendor/autoload.php');
+require_once('InvoiceHandler.php');
 
-    $invoiceData['companyName'] = 'Softwaremanufaktur Coreosoft';
-    $invoiceData['companyOwner'] = 'Marcel Roa';
-    $invoiceData['companyStreet'] = 'Haller Str.';
-    $invoiceData['companyHouseNumber'] = '8';
-    $invoiceData['companyZipCode'] = '16515';
-    $invoiceData['companyCity'] = 'Oranienburg';
+$invoiceData['companyName'] = 'Softwaremanufaktur Coreosoft';
+$invoiceData['companyOwner'] = 'Marcel Roa';
+$invoiceData['companyStreet'] = 'Haller Str.';
+$invoiceData['companyHouseNumber'] = '8';
+$invoiceData['companyZipCode'] = '16515';
+$invoiceData['companyCity'] = 'Oranienburg';
 
-    $invoiceData['receiverName'] = 'Max Musterkerl';
-    $invoiceData['receiverStreet'] = 'Musterstraße';
-    $invoiceData['receiverHouseNumber'] = '1k';
-    $invoiceData['receiverZipCode'] = '11111';
-    $invoiceData['receiverCity'] = 'Musterstadt';
+$invoiceData['receiverName'] = 'Max Musterkerl';
+$invoiceData['receiverStreet'] = 'Musterstraße';
+$invoiceData['receiverHouseNumber'] = '1k';
+$invoiceData['receiverZipCode'] = '11111';
+$invoiceData['receiverCity'] = 'Musterstadt';
 
-    $loader = new Twig_Loader_Filesystem('xml');
-    $twig = new Twig_Environment($loader);
+$invoiceData['iban'] = '12345678';
+$invoiceData['bic'] = 'WELADED1XXX';
 
-    $return = null;
-    $output = [];
+$loader = new Twig_Loader_Filesystem('xml');
+$twig = new Twig_Environment($loader);
 
-    $invoiceHandler = new InvoiceHandler();
+$return = null;
+$output = [];
 
-    $renderedInvoice = $invoiceHandler->getRenderedInvoice($twig, $invoiceData);
+$invoiceHandler = new InvoiceHandler();
 
-    $invoiceHandler->saveRenderedInvoideToFile($renderedInvoice);
+$renderedInvoice = $invoiceHandler->getRenderedInvoice($twig, $invoiceData);
 
-    exec("fop-2.1/fop tmp/tmp.fo tmp/tmp.pdf", $output, $return);
+$invoiceHandler->saveRenderedInvoideToFile($renderedInvoice);
+header('Content-Type: application/pdf');
+echo file_get_contents('tmp/tmp.pdf');
+
+exec("fop-2.1/fop tmp/tmp.fo tmp/tmp.pdf", $output, $return);
 ?>
