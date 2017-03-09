@@ -36,7 +36,7 @@
             <fo:block-container absolute-position="absolute"
                                 left="15cm">
                 <fo:block font-weight="bold">Geschäftsführung:</fo:block>
-                <fo:block>Inh. {{ companyOwner }}</fo:block>
+                <fo:block>Inh. Marcel Roa</fo:block>
                 <fo:block>St.-Nr.: 12345/4632555</fo:block>
                 <fo:block>USt-IdNr.: DE154235253</fo:block>
             </fo:block-container>
@@ -58,7 +58,7 @@
                     Softwaremanufaktur Coreosoft • 16515 • Oranienburg
                 </fo:block>
                 <fo:block font-weight="bold">
-                    {{ receiverName }}
+                    Max Musterkerl
                 </fo:block>
                 <fo:block>
                     Musterstr. 1

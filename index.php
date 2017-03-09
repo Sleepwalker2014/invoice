@@ -1,26 +1,31 @@
 <?php
     require_once ('vendor/autoload.php');
+    require_once ('InvoiceHandler.php');
 
-    $invoiceData['companyName'] = 'Softwaremanufaktur CoreoSoft';
+    $invoiceData['companyName'] = 'Softwaremanufaktur Coreosoft';
+    $invoiceData['companyOwner'] = 'Marcel Roa';
     $invoiceData['companyStreet'] = 'Haller Str.';
     $invoiceData['companyHouseNumber'] = '8';
     $invoiceData['companyZipCode'] = '16515';
     $invoiceData['companyCity'] = 'Oranienburg';
 
-    $invoiceData['receiverName'] = 'Max Mustermann';
+    $invoiceData['receiverName'] = 'Max Musterkerl';
     $invoiceData['receiverStreet'] = 'Musterstraße';
     $invoiceData['receiverHouseNumber'] = '1k';
     $invoiceData['receiverZipCode'] = '11111';
     $invoiceData['receiverCity'] = 'Musterstadt';
 
-    $loader = new Twig_Loader_Filesystem('html');
+    $loader = new Twig_Loader_Filesystem('xml');
     $twig = new Twig_Environment($loader);
-
-    $html = $twig->render('invoice.twig.html', $invoiceData);
 
     $return = null;
     $output = [];
-    exec('fop-2.1/fop xml/invoice.fo.twig tmp/tmp.pdf', $output, $return);
 
-    echo $return;
+    $invoiceHandler = new InvoiceHandler();
+
+    $renderedInvoice = $invoiceHandler->getRenderedInvoice($twig, $invoiceData);
+
+    $invoiceHandler->saveRenderedInvoideToFile($renderedInvoice);
+
+    exec("fop-2.1/fop tmp/tmp.fo tmp/tmp.pdf", $output, $return);
 ?>
