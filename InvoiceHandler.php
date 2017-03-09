@@ -19,6 +19,6 @@ class InvoiceHandler {
     }
 
     public function saveRenderedInvoideToFile ($renderedInvoice) {
-        return file_put_contents('invoice.fo.twig', $renderedInvoice);
+        return file_put_contents('tmp.fo', $renderedInvoice);
     }
 }
