@@ -25,10 +25,10 @@
             </fo:block-container>
 
             <fo:block-container absolute-position="absolute"
-                                left="9cm">
+                                left="9cm"
+                                width="4cm">
                 <fo:block font-weight="bold">Bankverbindung:</fo:block>
-                <fo:block>Mittelbrandenburgische</fo:block>
-                <fo:block>Sparkasse Potsdam</fo:block>
+                <fo:block>{{ bankName }}</fo:block>
                 <fo:block>IBAN: {{ iban }}</fo:block>
                 <fo:block>BIC: {{ bic }}</fo:block>
             </fo:block-container>
@@ -37,8 +37,8 @@
                                 left="15cm">
                 <fo:block font-weight="bold">Geschäftsführung:</fo:block>
                 <fo:block>Inh. {{ companyOwner }}</fo:block>
-                <fo:block>St.-Nr.: 12345/4632555</fo:block>
-                <fo:block>USt-IdNr.: DE154235253</fo:block>
+                <fo:block>St.-Nr.: {{ taxNumber }}</fo:block>
+                <fo:block>USt-IdNr.: {{ taxId }}</fo:block>
             </fo:block-container>
 
             <fo:block margin-top="2.5cm"
@@ -72,16 +72,16 @@
                                 left="10cm">
                 <fo:block font-weight="bold"
                           margin-bottom="0.1cm">
-                    Softwaremanufaktur Coreosoft
+                    {{ companyName }}
                 </fo:block>
                 <fo:block font-weight="bold">
-                    Inh. Marcel Roa
+                    Inh. {{ companyOwner }}
                 </fo:block>
                 <fo:block>
-                    Haller Str. 8
+                    {{ companyStreet }} {{ companyHouseNumber }}
                 </fo:block>
                 <fo:block margin-bottom="0.5cm">
-                    16515 Oranienburg
+                    {{ companyZipCode }} {{ companyCity }}
                 </fo:block>
 
                 <fo:block font-weight="bold"
@@ -89,16 +89,16 @@
                     Kontaktdaten:
                 </fo:block>
                 <fo:block>
-                    Mobil: (0176) 97899006
+                    Mobil: {{ companyMobile }}
                 </fo:block>
                 <fo:block>
-                    Tel.: (03301) 6769319
+                    Tel.: {{ companyTelephone }}
                 </fo:block>
                 <fo:block>
-                    Email: marcel.roa@gmx.de
+                    Email: {{ companyEmail }}
                 </fo:block>
                 <fo:block>
-                    Web: www.coreosoft.de
+                    Web: {{ companyWeb }}
                 </fo:block>
             </fo:block-container>
 
@@ -109,17 +109,17 @@
                     Rechnung
                 </fo:block>
                 <fo:block>
-                    Rechnungsnummer: 01/01/17/123
+                    Rechnungsnummer: {{ invoiceNumber }}
                 </fo:block>
                 <fo:block>
-                    Datum: 01.01.2017
+                    Datum: {{ invoiceDate }}
                 </fo:block>
                 <fo:block margin-bottom="0.6cm">
                     Kundennummer: 62385
                 </fo:block>
 
                 <fo:block margin-bottom="0.5cm">
-                    Sehr geehrter Herr Mustermann,
+                    Sehr geehrter {{ receiverTitle }} Mustermann,
                 </fo:block>
                 <fo:block margin-bottom="0.1cm">
                     Wir Danken Ihnen für das uns entgegengebrachte Vertrauen und erlauben uns hiermit,
@@ -134,9 +134,9 @@
                 <fo:table-column column-number="1"
                                  column-width="15%"/>
                 <fo:table-column column-number="2"
-                                 column-width="60%"/>
+                                 column-width="70%"/>
                 <fo:table-column column-number="3"
-                                 column-width="25%"/>
+                                 column-width="15%"/>
 
                 <fo:table-header
                         font-weight="bold">
@@ -163,6 +163,30 @@
                 </fo:table-header>
 
                 <fo:table-body>
+                    {% for positionIndex, position in positions %}
+                       <fo:table-row>
+                            <fo:table-cell column-number="1"
+                                           padding="1mm">
+                                <fo:block>Pos. {{ positionIndex }}</fo:block>
+                            </fo:table-cell>
+                            <fo:table-cell column-number="2"
+                                           padding="1mm">
+                                <fo:block font-weight="bold">{{ position.shortDescription }}</fo:block>
+                                <fo:block margin-bottom="3mm">
+                                    {{ position.longDescription }}
+                                </fo:block>
+                                <fo:block>3 PS Einzelpreis: 45,50 €</fo:block>
+                            </fo:table-cell>
+                            <fo:table-cell column-number="3"
+                                           padding="1mm"
+                                           text-align="right"
+                                           display-align="after">
+                                <fo:block>{{ position.price }} €</fo:block>
+                            </fo:table-cell>
+                        </fo:table-row>
+                    {% endfor %}
+
+
                     <fo:table-row>
                         <fo:table-cell column-number="1"
                                        padding="1mm">
@@ -283,11 +307,11 @@
             <fo:block text-align="right"
                       margin-bottom="0.5cm"
                       font-weight="bold">
-                Gesamt: 345,56 €
+                Gesamt: {{ totalPrice }} €
             </fo:block>
 
             <fo:block margin-bottom="0.25cm">Bitte überweisen Sie den Betrag von
-                <fo:inline font-weight="bold">544,40 Euro</fo:inline>
+                <fo:inline font-weight="bold">{{ totalPrice }} Euro</fo:inline>
                 unter Angabe der Rechnungsnummer bis zum
                 <fo:inline font-weight="bold">01.01.2017</fo:inline>
                 auf die untenstehende Bankverbindung.
