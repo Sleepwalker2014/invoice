@@ -34,15 +34,29 @@ class PositionHolder {
      */
     public function getPositionOutput () {
         $positionCount = 1;
+        $totalPrice = 0;
         $positionOutput = [];
 
+        $evenPositionColor = '#f0f0f0';
+        $unevenPositionColor = '#e8e8e8';
+
         foreach ($this->positions as $position) {
-            $positionOutput[$positionCount] = ['shortDescription' => $position->getShortDescription(),
-                                               'longDescription' => $position->getLongDescription(),
-                                               'price' => str_replace('.', ',', $position->getPrice())];
+            $backgroundColor = $unevenPositionColor;
+            if ($positionCount % 2 == 0) {
+                $backgroundColor = $evenPositionColor;
+            }
+
+            $positionOutput['positions'][$positionCount] = ['shortDescription' => $position->getShortDescription(),
+                                                            'longDescription' => $position->getLongDescription(),
+                                                            'price' => str_replace('.', ',', $position->getPrice()),
+                                                            'backgroundColor' => $backgroundColor];
+
+            $totalPrice += $position->getPrice();
 
             $positionCount++;
         }
+
+        $positionOutput['totalPrice'] = str_replace('.', ',', $totalPrice);
 
         return $positionOutput;
     }

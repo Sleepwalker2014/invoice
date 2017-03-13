@@ -124,7 +124,7 @@
                 <fo:block margin-bottom="0.1cm">
                     Wir Danken Ihnen für das uns entgegengebrachte Vertrauen und erlauben uns hiermit,
                 </fo:block>
-                <fo:block margin-bottom="0.5cm">
+                <fo:block margin-bottom="0.25cm">
                     Ihnen folgende Positionen für die ausgeführten Dienstleistungen in Rechnung zu stellen.
                 </fo:block>
             </fo:block-container>
@@ -163,8 +163,8 @@
                 </fo:table-header>
 
                 <fo:table-body>
-                    {% for positionIndex, position in positions %}
-                       <fo:table-row>
+                    {% for positionIndex, position in positions.positions %}
+                        <fo:table-row background-color="{{ position.backgroundColor }}">
                             <fo:table-cell column-number="1"
                                            padding="1mm">
                                 <fo:block>Pos. {{ positionIndex }}</fo:block>
@@ -185,116 +185,6 @@
                             </fo:table-cell>
                         </fo:table-row>
                     {% endfor %}
-
-
-                    <fo:table-row>
-                        <fo:table-cell column-number="1"
-                                       padding="1mm">
-                            <fo:block>Pos. 1</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="2"
-                                       padding="1mm">
-                            <fo:block font-weight="bold">Anforderungsermittlung</fo:block>
-                            <fo:block margin-bottom="3mm">Absprache des Kundenwunsches, sowie Erstellung eines
-                                Pflichtenheftes
-                            </fo:block>
-                            <fo:block>3 PS Einzelpreis: 45,50 €</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="3"
-                                       padding="1mm"
-                                       text-align="right"
-                                       display-align="after">
-                            <fo:block>345,56 €</fo:block>
-                        </fo:table-cell>
-                    </fo:table-row>
-
-                    <fo:table-row>
-                        <fo:table-cell column-number="1"
-                                       padding="1mm">
-                            <fo:block>Pos. 1</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="2"
-                                       padding="1mm">
-                            <fo:block font-weight="bold">Anforderungsermittlung</fo:block>
-                            <fo:block>Absprache des Kundenwunsches, sowie Erstellung eines Pflichtenheftes</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="3"
-                                       padding="1mm"
-                                       text-align="right"
-                                       display-align="after">
-                            <fo:block>345,56 €</fo:block>
-                        </fo:table-cell>
-                    </fo:table-row>
-
-                    <fo:table-row>
-                        <fo:table-cell column-number="1"
-                                       padding="1mm">
-                            <fo:block>Pos. 1</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="2"
-                                       padding="1mm">
-                            <fo:block font-weight="bold">Anforderungsermittlung</fo:block>
-                            <fo:block>Absprache des Kundenwunsches, sowie Erstellung eines Pflichtenheftes</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="3"
-                                       padding="1mm"
-                                       text-align="right"
-                                       display-align="after">
-                            <fo:block>345,56 €</fo:block>
-                        </fo:table-cell>
-                    </fo:table-row>
-
-                    <fo:table-row>
-                        <fo:table-cell column-number="1"
-                                       padding="1mm">
-                            <fo:block>Pos. 1</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="2"
-                                       padding="1mm">
-                            <fo:block font-weight="bold">Anforderungsermittlung</fo:block>
-                            <fo:block>Absprache des Kundenwunsches, sowie Erstellung eines Pflichtenheftes</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="3"
-                                       padding="1mm"
-                                       text-align="right"
-                                       display-align="after">
-                            <fo:block>345,56 €</fo:block>
-                        </fo:table-cell>
-                    </fo:table-row>
-                    <fo:table-row>
-                        <fo:table-cell column-number="1"
-                                       padding="1mm">
-                            <fo:block>Pos. 1</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="2"
-                                       padding="1mm">
-                            <fo:block font-weight="bold">Anforderungsermittlung</fo:block>
-                            <fo:block>Absprache des Kundenwunsches, sowie Erstellung eines Pflichtenheftes</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="3"
-                                       padding="1mm"
-                                       text-align="right"
-                                       display-align="after">
-                            <fo:block>345,56 €</fo:block>
-                        </fo:table-cell>
-                    </fo:table-row>
-                    <fo:table-row>
-                        <fo:table-cell column-number="1"
-                                       padding="1mm">
-                            <fo:block>Pos. 1</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="2"
-                                       padding="1mm">
-                            <fo:block font-weight="bold">Anforderungsermittlung</fo:block>
-                            <fo:block>Absprache des Kundenwunsches, sowie Erstellung eines Pflichtenheftes</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell column-number="3"
-                                       padding="1mm"
-                                       text-align="right"
-                                       display-align="after">
-                            <fo:block>345,56 €</fo:block>
-                        </fo:table-cell>
-                    </fo:table-row>
                 </fo:table-body>
             </fo:table>
 
@@ -302,16 +192,16 @@
                 <fo:leader leader-pattern="rule"
                            leader-length="100%"
                            rule-style="double"
-                           rule-thickness="2pt"/>
+                           rule-thickness="3px"/>
             </fo:block>
             <fo:block text-align="right"
                       margin-bottom="0.5cm"
                       font-weight="bold">
-                Gesamt: {{ totalPrice }} €
+                Gesamtbetrag: {{ positions.totalPrice }} €
             </fo:block>
 
             <fo:block margin-bottom="0.25cm">Bitte überweisen Sie den Betrag von
-                <fo:inline font-weight="bold">{{ totalPrice }} Euro</fo:inline>
+                <fo:inline font-weight="bold">{{ positions.totalPrice }} Euro</fo:inline>
                 unter Angabe der Rechnungsnummer bis zum
                 <fo:inline font-weight="bold">01.01.2017</fo:inline>
                 auf die untenstehende Bankverbindung.

@@ -43,6 +43,10 @@ $positionHolder->addPosition(new Position('Anforderungsermittlung',
                                           'Ermittlung von Anforderung und Erstellung eines Lastenheftes',
                                           435.43));
 
+$positionHolder->addPosition(new Position('Anforderungsermittlung',
+                                          'Ermittlung von Anforderung und Erstellung eines Lastenheftes',
+                                          435.43));
+
 $positionOutput = $positionHolder->getPositionOutput();
 
 
